@@ -1,0 +1,13 @@
+{
+    "name": "stonejs",
+    "version": "0.0.1",
+    "license": "MIT",
+    "description": "Stonejs App",
+    "scripts": {
+      "build": "browserify public/js/main.js -o public/js/app.js"
+    },
+    "dependencies": {
+        "mime": "~1.2.11",
+        "angular": "~1.2.10"
+    }
+}
