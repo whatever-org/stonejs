@@ -23,7 +23,9 @@
         "mocha": "*",
         "chai": "*",
         "sinon": "*",
-        "sinon-chai": "*"
+        "sinon-chai": "*",
+        "phantomjs": "~1.9",
+        "casperjs": "~1.1"
 	},
 	"dependencies": {
 		"mime": "~1.2.11",
