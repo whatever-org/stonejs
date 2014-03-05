@@ -19,7 +19,11 @@
 		"browserify": "~3.31.2",
 		"watchify": "~0.5.4",
 		"napa": "~0.4.0",
-		"node-static": "~0.7.3"
+		"node-static": "~0.7.3",
+        "mocha": "*",
+        "chai": "*",
+        "sinon": "*",
+        "sinon-chai": "*"
 	},
 	"dependencies": {
 		"mime": "~1.2.11",
