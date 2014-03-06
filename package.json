@@ -1,44 +1,30 @@
 {
-	"name": "stonejs",
-	"version": "0.0.2",
-	"description": "StoneJs App",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/whatever-org/stonejs.git"
-	},
-	"author": "",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/whatever-org/stonejs/issues"
-	},
-	"homepage": "https://github.com/whatever-org/stonejs",
-	"devDependencies": {
-		"grunt": "",
-		"grunt-contrib-watch": "",
-		"grunt-contrib-concat": "",
-		"browserify": "~3.31.2",
-		"watchify": "~0.5.4",
-		"napa": "~0.4.0",
-		"node-static": "~0.7.3",
-        "mocha": "*",
+    "name": "stonejs",
+    "version": "0.0.2",
+    "description": "StoneJs App",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/whatever-org/stonejs.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/whatever-org/stonejs/issues"
+    },
+    "homepage": "https://github.com/whatever-org/stonejs",
+    "devDependencies": {
         "chai": "*",
         "sinon": "*",
         "sinon-chai": "*",
         "phantomjs": "~1.9",
-        "casperjs": "~1.1"
-	},
-	"dependencies": {
-		"mime": "~1.2.11",
-		"jquery": "~2.1.0"
-	},
-	"scripts": {
-		"install": "napa",
-		"watch": "watchify public/js/app.js -o public/js/main.js -dv",
-		"build": "browserify public/js/app.js -o public/js/main.js",
-		"start-dev": "npm run-script build && npm start"
-	},
-	"napa": {
-		"angular": "angular/bower-angular",
-		"angular-route": "angular/bower-angular-route"
-	}
+        "casperjs": "~1.1",
+        "express": "~3.4.8"
+    },
+    "dependencies": {
+        "mime": "~1.2.11",
+        "jquery": "~2.1.0"
+    },
+    "scripts": {
+        "casper": "casperjs test test/casper.js"
+    }
 }
