@@ -1,26 +1,18 @@
-var app = require('http').createServer(requestHandler),
-	port = Number(process.env.PORT || 3000),
-	static = require('node-static'),
-	util = require("util"),
-	fileServer = new static.Server('./public', { cache: false })
-	assetTypes = [".js", ".css", ".txt", ".ico", ".html", ".png"];
+// set up
+var express  = require('express');
+var app      = express();
+var mongoose = require('mongoose');
+var port = Number(process.env.PORT || 3000)
+require('./app/routes')(app);
 
-function isStaticResource(url) {
-	return assetTypes.reduce(function(memo, assetType) {
-		return memo || url.indexOf(assetType) !== -1;
-	}, false);
-}
+// configuration
+//mongoose.connect('mongodb://localhost/test');
+//
+app.configure(function() {
+	app.use(express.static(__dirname + '/public'));
+});
 
-
-function requestHandler(request, response) {
-	request.addListener('end', function () {
-		if (!isStaticResource(request.url)) {
-			request.url = "/";
-		}
-		fileServer.serve(request, response);
-	}).resume();
-}
-
-app.listen(port, function() {
-	console.log("Listening on http://127.0.0.1:" + port);
+// listen (start app with node server.js)
+var server = app.listen(port, function() {
+    console.log('Listening on port %d', server.address().port);
 });

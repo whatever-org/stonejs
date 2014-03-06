@@ -13,16 +13,17 @@
     },
     "homepage": "https://github.com/whatever-org/stonejs",
     "devDependencies": {
+        "express": "~3.4.8",
+        "mongoose": "~3.8.8",
+        "ejs": "~0.8.5",
         "chai": "*",
         "sinon": "*",
         "sinon-chai": "*",
         "phantomjs": "~1.9",
-        "casperjs": "~1.1",
-        "express": "~3.4.8"
+        "casperjs": "~1.1"
     },
     "dependencies": {
-        "mime": "~1.2.11",
-        "jquery": "~2.1.0"
+        "mime": "~1.2.11"
     },
     "scripts": {
         "casper": "casperjs test test/casper.js"
