@@ -4,4 +4,4 @@
 
 ### Installation && use
  * `npm install`
- * `npm run-script watch-dev`
+ * `npm start`
