@@ -1,18 +1,24 @@
 module.exports = function(app, passport) {
 	app.get('/', function(req, res) {
-		res.render('../app/views/index.ejs')
+		res.render('index.ejs')
 	});
 
 	app.get('/login', function(req, res) {
-		res.render('../app/views/login.ejs');
+		res.render('login.ejs', { message: req.flash('loginMessage') });
 	});
 
 	app.get('/signup', function(req, res) {
-		res.render('../app/views/signup.ejs');
+		res.render('signup.ejs', { message: req.flash('signupMessage') });
 	});
 
+	app.post('/signup', passport.authenticate('local-signup', {
+		successRedirect: '/profile',
+		failureRedirect: '/signup',
+		failureFlash : true
+	}));
+
 	app.get('/profile', isLoggedIn, function(req, res) {
-		res.render('../app/views/profile.ejs', {
+		res.render('profile.ejs', {
 			user : req.user
 		});
 	});
