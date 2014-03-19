@@ -22,6 +22,10 @@
         "connect-flash" : "~0.1.1",
         "bcrypt-nodejs": "latest"
     },
+    "mocha": "*",
+    "chai": "*",
+    "sinon": "*",
+    "sinon-chai": "*",
     "dependencies": {
         "mime": "~1.2.11"
     },

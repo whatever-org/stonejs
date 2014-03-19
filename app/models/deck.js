@@ -2,39 +2,37 @@ var mongoose = require('mongoose'),
 	bcrypt = require('bcrypt-nodejs');
 
 var deckSchema = mongoose.Schema({
-	local: {
-		type: String,
-		hero: int,
-		cards_count: int,
-		cards_container: Array
-	}
+	type: {type: String, default: 'normal'},
+	hero: Number,
+	cards_count: {type: Number, default: 0},
+	cards_container: Array
 })
 
 deckSchema.methods.isArena = function(){
-	return this.local.type === "arena";
+	return this.type === "arena";
 }
 
 deckSchema.methods.isComplete = function(){
-	return this.local.cards_count >= 30;
+	return this.cards_count >= 30;
 }
 
 deckSchema.methods.addCard = function(card_id){
-	var currentCount = this.methods.getCardCount(card_id);
+	var currentCount = this.getCardCount(card_id);
 	if(currentCount > 0){
-		var cardToUpateIndex = this.local.cards_container.map(function(e) { return e.card_id; }).indexOf(card_id);
-		this.local.cards_container[cardToUpateIndex].count++;
+		var cardToUpateIndex = this.cards_container.map(function(e) { return e.card_id; }).indexOf(card_id);
+		this.cards_container[cardToUpateIndex].count++;
 	} else {
-		this.local.cards_container.push({
+		this.cards_container.push({
 			card_id: card_id,
 			count: ++currentCount,
 		});
 	}
-	this.local.cards_count++;
+	this.cards_count++;
 }
 
 deckSchema.methods.getCardCount = function(card_id){
 	var card_count = 0;
-	this.local.cards_container.forEach(function(x, i){
+	this.cards_container.forEach(function(x, i){
 		if(card_id === x.card_id){
 			card_count++;
 		}
@@ -44,14 +42,14 @@ deckSchema.methods.getCardCount = function(card_id){
 
 deckSchema.methods.removeCard = function(card_id){
 	var self = this;
-	this.local.cards_container.forEach(function(x, i){
+	this.cards_container.forEach(function(x, i){
 		if(card_id === x.card_id){
 			if(x.count > 1){
 				x.count--;
 			} else {
-				self.local.cards_container.splice(i, 1);
+				self.cards_container.splice(i, 1);
 			}
-			self.local.cards_count--;
+			self.cards_count--;
 		}
 	});
 }
