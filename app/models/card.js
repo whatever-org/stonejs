@@ -9,7 +9,9 @@ var cardSchema = mongoose.Schema({
 	health: Number,
 	description: String,
 	effects: Array,
-	isGold: {type: Boolean, default: false}
+	isGold: {type: Boolean, default: false},
+	rarity: {type: String, enum: ['Basic', 'Common', 'Rare', 'Epic', 'Legendary']},
+	dustCost: { creation: Number, destruction: Number}
 })
 
 module.exports = mongoose.model('Card', cardSchema);
